@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Browse Tracks {% endblock %}
+{% block content %}
+
+<div class="detail_img">
+    <img src="{{track.image}}" alt="{{track.name}}" />
+</div>
+<div class="detail_title">
+    <h1 class="title">{{track.title}}</h1>
+</div>
+<div class="detail_artist">
+    <h1 class="artist">{{track.artist}}</h1>
+</div>
+<div class="detail_duration">
+    <h1 class="duration">{{track.duration}}</h1>
+</div>
+<div class="detail_link">
+    <h1 class="link">{{track.link}}</h1>
+</div>
+<div class="detail_lyrics">
+    <h1 class="lyrics">{{track.lyrics}}</h1>
+</div>
+
+{% endblock %}
