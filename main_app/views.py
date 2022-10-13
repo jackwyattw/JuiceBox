@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
 from django.urls import reverse
 # from django.views.generic. import CreateView
-from .models import Track
+from .models import Track, Playlist
 
 # Create your views here.
 
@@ -40,6 +40,14 @@ class TrackList(TemplateView):
  
         return context
 
+class LikedTracks(TemplateView):
+    template_name = 'liked_tracks.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['playlist'] = Playlist.objects.all()
+        return context
+
 class TrackView(DetailView):
     model = Track
     template_name="trackview.html"
@@ -63,3 +71,10 @@ class NewTrackView(TemplateView):
         context = super().get_context_data(**kwargs)    
         context["newtracks"] = NewTrack
         return context
+
+# class PlaylistSongAssoc(View):
+
+#     def get(self, request, pk, song_pk):
+
+#         assoc = request.GET.get("assoc")
+#         if assoc == "remove":

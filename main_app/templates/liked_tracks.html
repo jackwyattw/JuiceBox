@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} My JuiceBox {% endblock %}
+
+{% block content %}
+<h1>My JuiceBox</h1>
+<div class ='playlists'>
+    {% for playlist in playlists %}
+        <h1>hi</h1>
+        <div class="playlist">
+            <h3 class="playlist title">{{playlist.title}}</h3>
+            <hr />
+
+            {% for track in playlist.tracks.all %}
+
+                <div class="track">
+                    <span>{{forloop.counter}}</span>
+                    <span><b>{{track.title}}</b></span>
+                    <span>{{track.duration}}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% empty %}
+        <div class="none">"No songs in this playlist..."</div>
+
+    {% endfor %}
+</div>
+{% endblock %}

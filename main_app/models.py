@@ -15,5 +15,12 @@ class Track(models.Model):
     def __str__(self):
         return self.title
 
-    # class Meta:
-    #     ordering = ['title']
+class Playlist(models.Model):
+
+    title = models.CharField(max_length=150)
+
+    # create join table
+    tracks = models.ManyToManyField(Track)
+
+    def __str__(self):
+        return self.title
