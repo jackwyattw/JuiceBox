@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'JB_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'juice-box-project',
     }
 }
