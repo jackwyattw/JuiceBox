@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'JB_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'JBproject',
+        'NAME': 'juice-box-project',
     }
 }
 
@@ -130,5 +130,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'main_app/static')]
 
 # Configure Django App for Heroku.
-import django_heroku
 django_heroku.settings(locals())
