@@ -1,0 +1,1 @@
+web: gunicorn JB_project.wsgi

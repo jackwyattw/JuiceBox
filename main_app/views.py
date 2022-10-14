@@ -69,7 +69,8 @@ class NewTrackView(TemplateView):
         context["newtracks"] = NewTrack
         return context
 
-class LikedTracks(TemplateView):
+
+class Playlists(TemplateView):
     template_name = 'liked_tracks.html'
 
     def get_context_data(self, **kwargs):
