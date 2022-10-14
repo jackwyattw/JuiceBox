@@ -5,17 +5,21 @@
 <h1>My JuiceBox</h1>
 <div class ='playlists'>
     {% for playlist in playlists %}
-        <h1>hi</h1>
         <div class="playlist">
             <h3 class="playlist title">{{playlist.title}}</h3>
             <hr />
 
             {% for track in playlist.tracks.all %}
 
-                <div class="track">
+                <div class="trackz">
                     <span>{{forloop.counter}}</span>
                     <span><b>{{track.title}}</b></span>
                     <span>{{track.duration}}</span>
+                    <a href="{% url 'playlist_track_assoc' playlist.pk track.pk %}?assoc=remove" class="buttonz">
+                        <span class="icon">
+                            <i class="fas">X</i>
+                        </span>
+                    </a>
                 </div>
             {% endfor %}
         </div>

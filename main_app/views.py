@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 from django.views.generic.base import TemplateView
@@ -40,17 +40,14 @@ class TrackList(TemplateView):
  
         return context
 
-class LikedTracks(TemplateView):
-    template_name = 'liked_tracks.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['playlist'] = Playlist.objects.all()
-        return context
-
 class TrackView(DetailView):
     model = Track
     template_name="trackview.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["playlists"] = Playlist.objects.all()
+        return context
 
 class TrackCreate(CreateView):
     model = Track
@@ -72,9 +69,24 @@ class NewTrackView(TemplateView):
         context["newtracks"] = NewTrack
         return context
 
-# class PlaylistSongAssoc(View):
+class LikedTracks(TemplateView):
+    template_name = 'liked_tracks.html'
 
-#     def get(self, request, pk, song_pk):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['playlists'] = Playlist.objects.all()
+        return context        
 
-#         assoc = request.GET.get("assoc")
-#         if assoc == "remove":
+class PlaylistTrackAssoc(View):
+
+    def get(self, request, pk, track_pk):
+
+        assoc = request.GET.get("assoc")
+        
+        if assoc == "remove":
+
+            Playlist.objects.get(pk=pk).tracks.remove(track_pk)
+        if assoc == 'add':
+
+            Playlist.objects.get(pk=pk).tracks.add(track_pk)
+        return redirect("playlists")
