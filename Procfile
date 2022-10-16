@@ -1,0 +1,1 @@
+web: gunicorn juice-box-project.wsgi
