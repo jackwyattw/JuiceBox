@@ -13,7 +13,10 @@
 
                 <div class="trackz">
                     <span>{{forloop.counter}}</span>
-                    <span><b>{{track.title}}</b></span>
+                    <a href="{% url 'view_track' track.pk %}">
+                        <span><b>{{track.title}}      ~~  {{track.artist}}</b></span>
+                    </a>
+                    
                     <span>{{track.duration}}</span>
                     <a href="{% url 'playlist_track_assoc' playlist.pk track.pk %}?assoc=remove" class="buttonz">
                         <span class="icon">

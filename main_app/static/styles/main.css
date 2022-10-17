@@ -23,7 +23,7 @@ color: #ffffff;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     justify-content: center;
-    gap: 30px;
+    row-gap: 70px;
 }
 
 .gallery .card {
@@ -80,17 +80,23 @@ img {
 .card{
     width: 1fr;
     content: center;
+    padding-bottom: 200px;
+    /* height: 300px; */
 }
 .song{
     width: 1fr;
+    row-gap: 70px;
 }
 .card-title{
     margin-top: 1px;
 }
 .img{
-    height: 200px;
+    max-height: 100%;
+    max-width: 100%;
 }
-
+.card-image{
+    width:250px;
+}
 .gallery .card {
     transition: .1s linear;
 }
@@ -175,5 +181,24 @@ display: grid;
 grid-template-columns: 0.1fr 3fr 0.5fr 0.3fr;
 border-radius: 5px;
 background-color: #ddd;
-color:aqua;
+color:rgb(43, 0, 255);
+}
+.card-image{
+    
+}
+
+.detail_img{
+    height: 100%;
+}
+.buttonz {
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
 }

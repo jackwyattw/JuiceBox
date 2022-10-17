@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -14,5 +14,4 @@ urlpatterns = [
     path('submitted/', views.NewTrackView.as_view(), name='submitted'),
     path('playlists/', views.Playlists.as_view(), name='playlists'),
     path('playlists/<int:pk>/tracks/<int:track_pk>/', views.PlaylistTrackAssoc.as_view(), name="playlist_track_assoc"),
-
 ]
